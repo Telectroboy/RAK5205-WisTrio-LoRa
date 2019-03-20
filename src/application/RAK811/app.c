@@ -226,13 +226,13 @@ static uint8_t PrepareTxFrame(uint8_t port, uint8_t * app_data, uint8_t * size )
 				app_data[9] = ((altitudeGps * 100) >> 8) & 0xFF;
 				app_data[10] = (altitudeGps * 100) & 0xFF;
 				
-				float speed;
-				sscanf(NmeaGpsData.NmeaSpeed,"%f", &speed );
-				speed*=1.852;  //unit:km/h
-				app_data[11] = ((uint16_t)(speed*100)>>8)& 0xFF;; //high byte speed   
-				app_data[12] = ((uint16_t)(speed*100))& 0xFF;; //low byte speed    
-				*size = 13;	
-				e_printf("latitude: %f, longitude: %f , altitudeGps: %d, speed: %f\r\n", latitude, longitude, altitudeGps,speed);
+//				float speed;
+//				sscanf(NmeaGpsData.NmeaSpeed,"%f", &speed );
+//				speed*=1.852;  //unit:km/h
+//				app_data[11] = ((uint16_t)(speed*100)>>8)& 0xFF;; //high byte speed   
+//				app_data[12] = ((uint16_t)(speed*100))& 0xFF;; //low byte speed    
+				*size = 11;	
+				e_printf("latitude: %f, longitude: %f , altitudeGps: %d,\r\n", latitude, longitude, altitudeGps);
 				f_ret = SUCCESS;
 			}
 /*			
