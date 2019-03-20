@@ -212,29 +212,22 @@ static uint8_t PrepareTxFrame(uint8_t port, uint8_t * app_data, uint8_t * size )
 			altitudeGps = GpsGetLatestGpsAltitude(); // in m
 			
 			gps84_To_Gcj02(latitude, longitude, &latitude, &longitude);
-			if( ret == SUCCESS )
-			{
-				app_data[0] = 0x01;
-				app_data[1] = 0x88;
-				app_data[2] = ((int32_t) (latitude * 10000) >> 16) & 0xFF;
-				app_data[3] = ((int32_t) (latitude * 10000) >> 8) & 0xFF;
-				app_data[4] = ((int32_t) (latitude * 10000)) & 0xFF;
-				app_data[5] = ((int32_t) (longitude * 10000) >> 16) & 0xFF;
-				app_data[6] = ((int32_t) (longitude * 10000) >> 8) & 0xFF;
-				app_data[7] = ((int32_t) (longitude * 10000)) & 0xFF;
-				app_data[8] = ((altitudeGps * 100) >> 16) & 0xFF;
-				app_data[9] = ((altitudeGps * 100) >> 8) & 0xFF;
-				app_data[10] = (altitudeGps * 100) & 0xFF;
-				
-//				float speed;
-//				sscanf(NmeaGpsData.NmeaSpeed,"%f", &speed );
-//				speed*=1.852;  //unit:km/h
-//				app_data[11] = ((uint16_t)(speed*100)>>8)& 0xFF;; //high byte speed   
-//				app_data[12] = ((uint16_t)(speed*100))& 0xFF;; //low byte speed    
-				*size = 11;	
-				e_printf("latitude: %f, longitude: %f , altitudeGps: %d,\r\n", latitude, longitude, altitudeGps);
-				f_ret = SUCCESS;
-			}
+  		if( ret == SUCCESS ){
+  		  app_data[0] = 0x01;
+  			app_data[1] = 0x88;
+  			app_data[2] = ((int32_t) (latitude * 10000) >> 16) & 0xFF;
+  			app_data[3] = ((int32_t) (latitude * 10000) >> 8) & 0xFF;
+  			app_data[4] = ((int32_t) (latitude * 10000)) & 0xFF;
+  			app_data[5] = ((int32_t) (longitude * 10000) >> 16) & 0xFF;
+  			app_data[6] = ((int32_t) (longitude * 10000) >> 8) & 0xFF;
+  			app_data[7] = ((int32_t) (longitude * 10000)) & 0xFF;
+  			app_data[8] = ((altitudeGps * 100) >> 16) & 0xFF;
+  			app_data[9] = ((altitudeGps * 100) >> 8) & 0xFF;
+  			app_data[10] = (altitudeGps * 100) & 0xFF;
+  			*size = 11;
+  			e_printf("latitude: %f, longitude: %f , altitudeGps: %d\r\n", latitude, longitude, altitudeGps);
+  			f_ret = SUCCESS;
+  		} 
 /*			
 			gps84_To_Gcj02(latitude, longitude, &latitude, &longitude);
 			if( ret == SUCCESS )
