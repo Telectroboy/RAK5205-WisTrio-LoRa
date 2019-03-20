@@ -1,7 +1,10 @@
 # RAK5205-WisTrio-LoRa
 RAK5205-WisTrio-LoRa :GPS ,BME680,LIS3DH,LoRaWAN1.0.2,ARM Cortex-M3 STM32L1<br><br>
 
-Modification pour passer la payload GPS compatible avec Cayenne LPP en 11 octets au lieu de 13
+
+Modification de app.c pour passer la payload GPS compatible avec Cayenne LPP en 11 octets au lieu de 13
+https://mydevices.com/cayenne/docs/lora/#lora-cayenne-low-power-payload
+
 
 **RAK5205-WisTrio-LoRa firmware version 2.x.0.6**<br>
 Modify the acceleration sensor LIS3DH send to server data package error.<br><br>
